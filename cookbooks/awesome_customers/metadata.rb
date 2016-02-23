@@ -6,6 +6,6 @@ description 'Installs/Configures awesome_customers'
 long_description 'Installs/Configures awesome_customers'
 version '0.1.0'
 
-depends 'apt', '~> 2.9.2'
+depends 'chef-sugar'
 depends 'firewall', '~> 2.4.0'
 depends 'httpd', '~> 0.3.4'
