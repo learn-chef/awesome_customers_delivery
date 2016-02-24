@@ -1,32 +1,35 @@
+<?php
+require_once('customer.php');
+
+// Generate a JSON-formatted string that holds the name and location of each customer.
+$places .= '\'{"type": "FeatureCollection","features": [';
+
+// Append data from each row
+$comma = "";
+foreach (get_sample_customers() as $customer) {
+  $places .= $comma.'{ "type": "Feature", "properties": { "name": "'.$customer->first_name." ".$customer->last_name.'" }, "geometry": { "type": "Point", "coordinates": [ '.$customer->longitude.', '.$customer->latitude.' ] } }';
+  $comma = ",";
+}
+
+$places .= ']}\'';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Customers</title>
-    <style>
-      table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
-        font-family: sans-serif;
-        padding: 5px;
-      }
-      table tr:nth-child(even) td {
-        background-color: #95c7ea;
-      }
-    </style>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-<?php
-  require_once('customer.php');
-  echo "<table>\n";
-  foreach (get_sample_customers() as $customer) {
-    echo "\t<tr>\n";
-    echo "\t\t<td>$customer->id</td>\n";
-    echo "\t\t<td>$customer->first_name</td>\n";
-    echo "\t\t<td>$customer->last_name</td>\n";
-    echo "\t\t<td>$customer->email</td>\n";
-    echo "\t</tr>\n";
-  }
-  echo "</table>";
-?>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"></script>
+  <script src="http://d3js.org/topojson.v0.min.js"></script>
+  <script src="vis.js"></script>
+  <script type="text/javascript">
+    function show_customers() {
+      create_map(JSON.parse(<?php echo $places; ?>));
+    }
+    window.onload = show_customers;
+  </script>
 </body>
 </html>
