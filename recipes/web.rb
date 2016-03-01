@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: awesome_customers
+# Cookbook Name:: awesome_customers_delivery
 # Recipe:: web
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
@@ -17,17 +17,17 @@ httpd_config 'customers' do
 end
 
 # Create the document root directory.
-directory node['awesome_customers']['document_root'] do
+directory node['awesome_customers_delivery']['document_root'] do
   recursive true
 end
 
 # Deploy content.
-node['awesome_customers']['content_files'].each do |file|
-  cookbook_file File.join(node['awesome_customers']['document_root'], file) do
+node['awesome_customers_delivery']['content_files'].each do |file|
+  cookbook_file File.join(node['awesome_customers_delivery']['document_root'], file) do
     source file
     mode '0644'
-    owner node['awesome_customers']['user']
-    group node['awesome_customers']['group']
+    owner node['awesome_customers_delivery']['user']
+    group node['awesome_customers_delivery']['group']
   end
 end
 
