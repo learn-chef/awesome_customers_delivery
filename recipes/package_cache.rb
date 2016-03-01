@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: awesome_customers
+# Cookbook Name:: awesome_customers_delivery
 # Recipe:: package_cache
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.

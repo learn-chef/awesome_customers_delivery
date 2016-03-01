@@ -16,5 +16,5 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[awesome_customers::default]
+      - recipe[awesome_customers_delivery::default]
     attributes:
