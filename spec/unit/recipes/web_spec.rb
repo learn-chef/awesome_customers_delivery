@@ -1,12 +1,12 @@
 #
-# Cookbook Name:: awesome_customers
+# Cookbook Name:: awesome_customers_delivery
 # Spec:: default
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
 require 'spec_helper'
 
-describe 'awesome_customers::web' do
+describe 'awesome_customers_delivery::web' do
   context 'When all attributes are default, on Ubuntu 14.04' do
     let(:chef_run) do
       runner = ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '14.04')
